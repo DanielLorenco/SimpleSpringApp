@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="~{fragments/layout.html :: head}"></head>
+
+<body>
+    <header th:replace="~{fragments/layout.html :: header}"></header>
+    <div class="uppercase-container" id="centrovac">
+        <header class="header-container">
+            <h1>Make it UpperCase!</h1>
+        </header>
+        <form method="post">
+            <label for="text" class="control-label">
+                Input the text you wish to transfer to upper case:
+                <!-- <input type="text" id="text" th:field="${upperCaseDTO.text}" /> -->
+            </label>
+            <textarea name="text" id="text" class="form-control" th:field="${upperCaseDTO.text}"
+                placeholder="Your text..." aria-describedby="yourText"></textarea>
+            <!-- <small class="text-danger" th:errors="${upperCaseDTO.text}"></small> -->
+
+            <div class="d-flex my-2" id="buttons-center">
+                <input class="btn submit-button" type="submit" value="MakeItUpperCase!"
+                    aria-describedby="submitButton" />
+                <input class="btn reset-button" type="reset" value="Reset" aria-describedby="resetButton" />
+            </div>
+        </form>
+        <div class="result-container" th:if="${result}">
+            <p>Text in capital letters:</p>
+            <span id="text-result" th:text="${result}"></span>
+        </div>
+    </div>
+    <footer th:replace="~{fragments/layout.html :: footer}"></footer>
+</body>
+
+</html>

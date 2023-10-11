@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="~{fragments/layout.html :: head}"></head>
+
+<body>
+    <header th:replace="~{fragments/layout.html :: header}"></header>
+    <article>
+        <div id="centrovac">
+            <header class="header-container">
+                <h1>Calculator</h1>
+            </header>
+            <div class="error-container">
+                <p th:if="${error}">Input error: <span th:text="${error}"></span></p>
+            </div>
+            <form method="post">
+                <div class="input-center">
+                    <div class="form-group">
+                        <label>First number:
+                            <input type="number" id="number1" name="number1" th:field="${calculatorDTO.number1}"
+                                required />
+                        </label>
+                    </div>
+                    <div class="form-group select">
+                        <label>Operation:
+                            <select id="operation" name="operation" th:field="${calculatorDTO.operation}">
+                                <option value="+">Plus</option>
+                                <option value="-">Minus</option>
+                                <option value="*">Times</option>
+                                <option value="/">Divide by</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            Second number:
+                            <input type="number" id="number2" name="number2" th:field="${calculatorDTO.number2}"
+                                required />
+                        </label>
+                    </div>
+                </div>
+                <div class="d-flex my-2" id="buttons-center">
+                    <input class="btn submit-button" type="submit" value="Submit" aria-describedby="submitButton" />
+                    <input class="btn reset-button" type="reset" value="Reset" aria-describedby="resetButton" />
+                </div>
+            </form>
+            <div class="result-container" th:if="${result}">
+                <p>Result:</p>
+                <span th:text="${result}"></span>
+            </div>
+        </div>
+    </article>
+    <footer th:replace="~{fragments/layout.html :: footer}"></footer>
+</body>
+
+</html>
